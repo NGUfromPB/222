@@ -5,5 +5,5 @@ import web.models.Car;
 import java.util.List;
 
 public interface Carserv {
-    List<Car> ans(List<Car> ans, Integer c);
+    List<Car> ans( Integer c);
 }
