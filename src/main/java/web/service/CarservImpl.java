@@ -7,6 +7,7 @@ import web.models.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class CarservImpl implements Carserv {
@@ -23,10 +24,6 @@ public class CarservImpl implements Carserv {
             carList.add(new Car("mers", (byte) 4,4));
             carList.add(new Car("spogetti", (byte) 5,5));
         }
-        List<Car> newCarList = new ArrayList<>();
-        for (int i = 0; i < c; i++) {
-            newCarList.add(carList.get(i));
-        }
-        return newCarList;
+        return carList.stream().limit(c).collect(Collectors.toList());
     }
 }
