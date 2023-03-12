@@ -12,12 +12,15 @@ import java.util.List;
 
 @Controller
 public class CarController {
+
+    private final Carserv carserv;
     @Autowired
-    private Carserv carserv;
+    public CarController (Carserv carserv) {
+        this.carserv=carserv;
+    }
     @GetMapping(value ="/cars")
     public String print(@RequestParam(defaultValue = "5") Integer c, ModelMap  model) {
-        List<Car> ans = carserv.ans(c);
-        model.addAttribute("cars",ans);
-        return "cars";
+        model.addAttribute("cars",carserv.ans(c));
+        return "/cars";
     }
 }
